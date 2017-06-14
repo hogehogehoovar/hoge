@@ -10,7 +10,7 @@
 - userが本参加意思表明->users_groupsのattendance=1
 
 | users | groups | events | restaurants | location | category | users_groups | users_events |
-|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+|---:|---:|---:|---:|---:|---:|---:|---:|
 | name       | event_id      | name        | name        | name | name | user_id    | user_id  |
 | email      | restaurant_id | start_time  | location_id |      |      | group_id   | event_id |
 | gender     |               | end_time    |             |      |      | attendance |          |

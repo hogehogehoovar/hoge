@@ -27,3 +27,8 @@
 - restaurant has many [group], belongs to [location]
 - location has many [events, restaurants]
 - category has many [events]
+
+###クラスタリングアイデア
+クラスタリングするだけだと、同じような人しか集まらなくてつまらないから、クラスタリングしたあと、確率でマッチング
+20代グループに40代が混ざってもいいとして、本当にいやなら、実際に参加するかどうか聞かれるフェーズでやめるはず。
+実際のイベント参加フラグで分析、学習

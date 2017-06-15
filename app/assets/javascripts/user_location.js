@@ -5,12 +5,12 @@ $(document).on('turbolinks:load', function() {
   function successCallback(position) {
     var gl_text = "緯度：" + position.coords.latitude + "<br>";
         gl_text += "経度：" + position.coords.longitude + "<br>";
-    var formData = { latitude: position.coords.latitude, longitude: position.coords.longitude }
+    var locationData = { coordinate :{ latitude: position.coords.latitude, longitude: position.coords.longitude } }
     document.getElementById("show_result").innerHTML = gl_text;
     $.ajax({
       type:        'POST',
       url:         '/events/search',
-      data:        formData,
+      data:        locationData,
       dataType:    'json'
     })
   }

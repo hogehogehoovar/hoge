@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615094343) do
+ActiveRecord::Schema.define(version: 20170615133750) do
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",        null: false
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20170615094343) do
     t.string   "image"
     t.integer  "location_id", null: false
     t.string   "category"
-    t.string   "address"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["location_id"], name: "index_events_on_location_id", using: :btree

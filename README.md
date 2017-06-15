@@ -18,7 +18,7 @@
 | birthday   |               | image       | phone_number | longitude | evaluation |          |
 | job        |               | location_id | url          |           |            |          |
 | university |               | category    |              |           |            |          |
-| image      |               | address     |              |           |            |          |
+| image      |               |             |              |           |            |          |
 
 
 ### Associations

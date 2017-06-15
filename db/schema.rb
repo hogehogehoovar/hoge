@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615040848) do
+ActiveRecord::Schema.define(version: 20170615040941) do
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",        null: false
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20170615040848) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["location_id"], name: "index_events_on_location_id", using: :btree
+  end
+
+  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "event_id",      null: false
+    t.integer  "restaurant_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["event_id"], name: "index_groups_on_event_id", using: :btree
+    t.index ["restaurant_id"], name: "index_groups_on_restaurant_id", using: :btree
   end
 
   create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -66,5 +75,7 @@ ActiveRecord::Schema.define(version: 20170615040848) do
   end
 
   add_foreign_key "events", "locations"
+  add_foreign_key "groups", "events"
+  add_foreign_key "groups", "restaurants"
   add_foreign_key "restaurants", "locations"
 end

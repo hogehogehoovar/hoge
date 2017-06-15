@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615035416) do
+ActiveRecord::Schema.define(version: 20170615040338) do
+
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",        null: false
+    t.datetime "start_time",  null: false
+    t.datetime "end_time",    null: false
+    t.string   "image"
+    t.integer  "location_id", null: false
+    t.string   "category"
+    t.string   "address"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["location_id"], name: "index_events_on_location_id", using: :btree
+  end
 
   create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -51,5 +64,6 @@ ActiveRecord::Schema.define(version: 20170615035416) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "events", "locations"
   add_foreign_key "restaurants", "locations"
 end

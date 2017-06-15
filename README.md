@@ -12,13 +12,13 @@
 
 | users | groups | events | restaurants | location | users_groups | users_events |
 |---:|---:|---:|---:|---:|---:|---:|
-| name       | event_id      | name        | name         | name    | user_id    | user_id  |
-| email      | restaurant_id | start_time  | location_id  | address | group_id   | event_id |
-| gender     |               | end_time    | address      |         | attendance |          |
-| birthday   |               | image       | phone_number |         | evaluation |          |
-| job        |               | location_id | url          |         |            |          |
-| university |               | category    |              |         |            |          |
-| image      |               | address     |              |         |            |          |
+| name       | event_id      | name        | name         | name      | user_id    | user_id  |
+| email      | restaurant_id | start_time  | location_id  | address   | group_id   | event_id |
+| gender     |               | end_time    | address      | latitude  | attendance |          |
+| birthday   |               | image       | phone_number | longitude | evaluation |          |
+| job        |               | location_id | url          |           |            |          |
+| university |               | category    |              |           |            |          |
+| image      |               | address     |              |           |            |          |
 
 
 ### Associations

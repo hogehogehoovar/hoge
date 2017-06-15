@@ -4,13 +4,15 @@ $(document).on('turbolinks:load', function() {
   /***** ユーザーの現在の位置情報を取得 *****/
   function successCallback(position) {
     var gl_text = "緯度：" + position.coords.latitude + "<br>";
-      gl_text += "経度：" + position.coords.longitude + "<br>";
-      gl_text += "高度：" + position.coords.altitude + "<br>";
-      gl_text += "緯度・経度の誤差：" + position.coords.accuracy + "<br>";
-      gl_text += "高度の誤差：" + position.coords.altitudeAccuracy + "<br>";
-      gl_text += "方角：" + position.coords.heading + "<br>";
-      gl_text += "速度：" + position.coords.speed + "<br>";
+        gl_text += "経度：" + position.coords.longitude + "<br>";
+    var formData = { latitude: position.coords.latitude, longitude: position.coords.longitude }
     document.getElementById("show_result").innerHTML = gl_text;
+    $.ajax({
+      type:        'POST',
+      url:         '/events/search',
+      data:        formData,
+      dataType:    'json'
+    })
   }
 
   /***** 位置情報が取得できない場合 *****/

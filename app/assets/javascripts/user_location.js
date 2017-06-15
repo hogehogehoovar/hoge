@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function() {
-  navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  var path = location.pathname;
+
   /***** ユーザーの現在の位置情報を取得 *****/
   function successCallback(position) {
     var gl_text = "緯度：" + position.coords.latitude + "<br>";
@@ -30,4 +31,11 @@ $(document).on('turbolinks:load', function() {
     document.getElementById("show_result").innerHTML = err_msg;
     //デバッグ用→ document.getElementById("show_result").innerHTML = error.message;
   }
+
+  if (path.match('/')) {
+    $(".button").on("click", function() {
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    });
+  }
+
 });

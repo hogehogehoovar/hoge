@@ -25,7 +25,7 @@
 
 - user has many [groups, events]
 - group has many [users], belongs to [event, restaurant]
-- event has many [groups, users], belongs to [location, category], has many restaurants through location
+- event has many [groups, users], belongs to [location], has many restaurants through location
 - restaurant has many [group], belongs to [location], has many events through location
 - location has many [events, restaurants]
-- category has many [events]
+

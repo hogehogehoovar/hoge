@@ -10,7 +10,7 @@
 - userが本参加意思表明->users_groupsのattendance=1
 - locationはイベント開催施設（東京ドームなど）を表し、eventとrestaurantを仲介する
 
-| users | groups | events | restaurants | location | users_groups | users_events |
+| users | groups | events | restaurants | location | group_users | event_users |
 |---:|---:|---:|---:|---:|---:|---:|
 | name       | event_id      | name        | name         | name      | user_id    | user_id  |
 | email      | restaurant_id | start_time  | location_id  | address   | group_id   | event_id |

@@ -1,4 +1,4 @@
-class UsersEventsController < ApplicationController
+class EventUsersController < ApplicationController
   def create
     event = Event.find(params[:event_id])
     # ToDo 処理を書く

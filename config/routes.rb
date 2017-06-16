@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     collection do
       post :search
     end
-    resources :users_events, only: :create
+    resources :event_users, only: :create
   end
 end

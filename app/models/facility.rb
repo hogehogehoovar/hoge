@@ -1,4 +1,4 @@
-class Location < ApplicationRecord
+class Facility < ApplicationRecord
   geocoded_by :address
   before_validation :geocode
   has_many :events

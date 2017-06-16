@@ -26,11 +26,20 @@ ActiveRecord::Schema.define(version: 20170616042732) do
     t.datetime "start_time",  null: false
     t.datetime "end_time",    null: false
     t.string   "image"
-    t.integer  "location_id", null: false
+    t.integer  "facility_id", null: false
     t.string   "category"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["location_id"], name: "index_events_on_location_id", using: :btree
+    t.index ["facility_id"], name: "index_events_on_facility_id", using: :btree
+  end
+
+  create_table "facilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                  null: false
+    t.string   "address",               null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.float    "latitude",   limit: 24
+    t.float    "longitude",  limit: 24
   end
 
   create_table "group_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -53,24 +62,15 @@ ActiveRecord::Schema.define(version: 20170616042732) do
     t.index ["restaurant_id"], name: "index_groups_on_restaurant_id", using: :btree
   end
 
-  create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                  null: false
-    t.string   "address",               null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.float    "latitude",   limit: 24
-    t.float    "longitude",  limit: 24
-  end
-
   create_table "restaurants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",         null: false
-    t.integer  "location_id",  null: false
+    t.integer  "facility_id",  null: false
     t.string   "address",      null: false
     t.string   "phone_number"
     t.string   "url"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["location_id"], name: "index_restaurants_on_location_id", using: :btree
+    t.index ["facility_id"], name: "index_restaurants_on_facility_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -98,10 +98,10 @@ ActiveRecord::Schema.define(version: 20170616042732) do
 
   add_foreign_key "event_users", "events"
   add_foreign_key "event_users", "users"
-  add_foreign_key "events", "locations"
+  add_foreign_key "events", "facilities"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
   add_foreign_key "groups", "events"
   add_foreign_key "groups", "restaurants"
-  add_foreign_key "restaurants", "locations"
+  add_foreign_key "restaurants", "facilities"
 end

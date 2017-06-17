@@ -1,6 +1,6 @@
 <h2> <%= @event.name %> </h2>
 <%= link_to "打ち上げに参加", event_event_users_path(@event), method: :post %>
-<h3>参加人数: <%= event.users.length %> 人
-<% if event.users.length >= 5 %>
+<h3>参加人数: <%= @event.users.length %> 人
+<% if @event.users.length >= 5 %>
   <%= link_to "グループを確定", group_path, method: :post %>
 <% end %>

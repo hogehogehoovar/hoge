@@ -1,0 +1,7 @@
+<p> グループが確定しました。 </p>
+<ul>
+  <% @group.users.each do |user| %>
+    <li> <%= user.name %>
+    </li>
+  <% end %>
+</ul>

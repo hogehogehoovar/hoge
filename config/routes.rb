@@ -6,6 +6,12 @@ Rails.application.routes.draw do
       post :search
     end
     resources :event_users, only: :create
-    resources :groups, only: [:show, :create]
+    resources :groups, only: [:show, :create] do
+      resources :group_users, only: [] do
+        collection do
+          get :attend
+        end
+      end
+    end
   end
 end

@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @event = Event.find(params[:event_id])
+    @restaurant = @group.restaurant
   end
 
   def create

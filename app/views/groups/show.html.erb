@@ -1,0 +1,11 @@
+<p> グループに参加しますか？ </p>
+<ul>
+  <% @group.users.each do |user| %>
+    <li>
+      <%= user.name %>
+      <% if user.id == current_user.id %>
+        <%= link_to "参加します", attend_event_group_group_users_path(@event, @group), id: 'attend_button', remote: true %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

@@ -3,6 +3,13 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @event = Event.find(params[:event_id])
     @restaurant = @group.restaurant
+    @facility = @event.facility
+
+    @hash = Gmaps4rails.build_markers(@facility) do |facility, marker|
+      marker.lat facility.latitude
+      marker.lng facility.longitude
+      marker.infowindow facility.name
+    end
   end
 
   def create

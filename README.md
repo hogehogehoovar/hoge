@@ -8,7 +8,7 @@
 - userが位置情報を送信->users_events作成
 - アルゴリズムで仮グループを作成->users_groups作成
 - userが本参加意思表明->users_groupsのattendance=1
-- locationはイベント開催施設（東京ドームなど）を表し、eventとrestaurantを仲介する
+- facilityはイベント開催施設（東京ドームなど）を表し、eventとrestaurantを仲介する
 
 | users | groups | events | restaurants | facility | group_users | event_users |
 |---:|---:|---:|---:|---:|---:|---:|

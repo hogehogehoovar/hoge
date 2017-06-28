@@ -15,7 +15,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html { redirecti_to root_path } # ToDo: ここの処理考える
-      format.js   { render ajax_redirect_to(event_path(event)) }
+      format.js   { render ajax_redirect_to(event_path(event)) } # ToDo: ここの例外処理
     end
   end
 

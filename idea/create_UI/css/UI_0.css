@@ -1,0 +1,21 @@
+.invitation{
+  z-index: 1
+}
+.party_eval{
+z-index: 2;
+height : 500px;
+position:relative; top:-100px;
+}
+
+.cancel_confirm{
+}
+
+.after_answer{
+  position:relative; top:-500px;
+  z-index:4;
+}
+
+.before_answer{
+  position:relative;top:-700px;
+  z-index:5;
+}

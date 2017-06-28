@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href = "css/UI_1.css"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-logo"></div>
+      <div class="header-list"></div>
+    </div>
+    <div class="main">
+      <div class="contents">
+        <!--benzainosankasya  -->
+        <div class = "card-panel teal lighten-4">
+          <h4 class="center">
+            現在の参加者**人
+          </h4>
+        </div>
+
+        <div class = "member_window">
+          <!--ここを動的に生成できるようにする
+              6人超えたら次の列を生成とか  -->
+          <div class = "row">
+            <div class="col s2">
+              <a href = "UI_0.html">
+                <img src="test.jpg" alt="" class="circle responsive-img">
+              </a>
+                <h6 class="center black-text">名前</h6>
+                <h6 class="center black-text">年齢</h6>
+                <h6 class="center black-text">職業</h6>
+              <!-- notice the "circle" class -->
+            </div>
+            <div class="col s2">
+              <img src="test.jpg" alt="" class="circle responsive-img">
+              <span class="black-text">
+                名前、年、職業とか
+              </span>
+              <!-- notice the "circle" class -->
+            </div>
+            <div class="col s2">
+              <img src="test.jpg" alt="" class="circle responsive-img">
+              <span class="black-text">
+                名前、年、職業とか
+              </span>
+              <!-- notice the "circle" class -->
+            </div>
+          </div>
+        </div>
+
+
+        <!--参加の意思表示ボタン  -->
+
+        <!--現地までの地図など  -->
+        <div class = "row">
+          <div class = "col s6">
+            <div class="card-panel white lighten-5" href = "**">
+               <a href = "****">レストラン名</a>
+              <p>予算 **円</p>
+              <p>**:**~**:**</p>
+            </div>
+            <img src = "restaurant.jpg" class = "responsive-img">
+
+          </div>
+          <div class = "col s6">
+            <img src = "map.jpg" class = "responsive-img">
+          </div>
+
+        </div>
+        <div class = "center">
+          <a class="waves-effect waves-light btn" href = "UI_2.html">参加</a>
+          <a class="waves-effect waves-light btn" href = "UI_0.html">不参加</a>
+          <a class="waves-effect waves-light btn" href = "UI_0.html">保留</a>
+          </div>
+    </div>
+  </body>
+</html>

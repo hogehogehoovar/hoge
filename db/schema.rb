@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616042732) do
+ActiveRecord::Schema.define(version: 20170627020100) do
 
   create_table "event_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",    null: false
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20170616042732) do
     t.string   "address",               null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.float    "latitude",   limit: 24
-    t.float    "longitude",  limit: 24
+    t.float    "latitude",   limit: 53
+    t.float    "longitude",  limit: 53
   end
 
   create_table "group_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -63,13 +63,15 @@ ActiveRecord::Schema.define(version: 20170616042732) do
   end
 
   create_table "restaurants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",         null: false
-    t.integer  "facility_id",  null: false
-    t.string   "address",      null: false
+    t.string   "name",                    null: false
+    t.integer  "facility_id",             null: false
+    t.string   "address",                 null: false
     t.string   "phone_number"
     t.string   "url"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.float    "latitude",     limit: 53
+    t.float    "longitude",    limit: 53
     t.index ["facility_id"], name: "index_restaurants_on_facility_id", using: :btree
   end
 

@@ -3,11 +3,6 @@ $(document).on('turbolinks:load', function() {
   if (path == '/') {
     /***** ユーザーの現在の位置情報を取得 *****/
     function successCallback(position) {
-      // ToDo ここを消す
-      var gl_text = "緯度：" + position.coords.latitude + "<br>";
-          gl_text += "経度：" + position.coords.longitude + "<br>";
-      document.getElementById("show_result").innerHTML = gl_text;
-
       var locationData = { coordinate :{ latitude: position.coords.latitude, longitude: position.coords.longitude } }
       $.ajax({
         type:        'POST',

@@ -1,4 +1,5 @@
 class EventUsersController < ApplicationController
+  # Deviseのデフォルトの設定で、ログイン後はログイン画面遷移前のビューに飛ぶ
   before_action :authenticate_user!
 
   def create

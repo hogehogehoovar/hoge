@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 
   def index
     # jsで位置情報を取得し、searchアクションへ遷移
+    # 位置情報を取得できないときは、jsが例外処理をrenderしてくれる
   end
 
   def show
@@ -11,13 +12,20 @@ class EventsController < ApplicationController
 
   def search
     # ユーザーの現在位置から半径50km圏内にある施設のうち、最も近い施設を入手
-    facility = Facility.near(coordinate, 50, :units => :km).first
-    # ToDo: 施設が見つからない時の例外処理
-    event = facility.current_event
+    facility = Facility.near(coordinate, 1, :units => :km).first
+    event = facility.try(:current_event)
 
-    respond_to do |format|
-      format.html { redirecti_to root_path }
-      format.js   { render ajax_redirect_to(event_path(event)) }
+    # 施設が見つからない時の例外処理
+    if facility.present? && event.present?
+      respond_to do |format|
+        format.html { redirecti_to root_path }
+        format.js   { render ajax_redirect_to(event_path(event)) }
+      end
+    else
+      respond_to do |format|
+        format.html { redirecti_to root_path }
+        format.js
+      end
     end
   end
 

@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
+  def index
+  end
+
   def show
     @group = Group.find(params[:id])
+    @users = @group.users
     @event = Event.find(params[:event_id])
     @restaurant = @group.restaurant
     @facility = @event.facility

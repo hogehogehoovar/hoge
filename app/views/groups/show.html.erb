@@ -2,20 +2,20 @@
   <div class="contents">
     <div class = "card-panel teal lighten-4">
       <h4 class="center">
-        現在の参加者**人
+        現在の参加者: <%= @users.length %>人
       </h4>
     </div>
 
     <div class = "member_window">
       <div class = "row">
-        <div class="col s3">
-          <a href = "UI_0.html">
+        <% @users.each do |user| %>
+          <div class="col s3">
             <%= image_tag "test.jpg", class: "circle responsive-img" %>
-          </a>
-            <h6 class="center black-text">名前</h6>
-            <h6 class="center black-text">年齢</h6>
-            <h6 class="center black-text">職業</h6>
-        </div>
+            <h6 class="center black-text">名前: <%= user.name %> </h6>
+            <h6 class="center black-text">年齢: <%= user.age %> </h6>
+            <h6 class="center black-text">職業: <%= user.job %> </h6>
+          </div>
+        <% end %>
       </div>
     </div>
 
@@ -39,10 +39,10 @@
 
     </div>
     <div class = "center">
-        <%= link_to "参加します", attend_event_group_group_users_path(@event, @group), id: 'attend_button', remote: true if false %>
+      <%= link_to "参加します", attend_event_group_group_users_path(@event, @group), id: 'attend_button', remote: true if false %>
+      <!-- ToDo: モーダルの表示 -->
       <a class="waves-effect waves-light btn" href = "UI_2.html">参加</a>
       <a class="waves-effect waves-light btn" href = "UI_0.html">不参加</a>
-      <a class="waves-effect waves-light btn" href = "UI_0.html">保留</a>
     </div>
   </div>
 </div>

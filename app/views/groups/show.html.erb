@@ -10,7 +10,7 @@
       <div class = "row">
         <% @users.each do |user| %>
           <div class="col s3">
-            <%= image_tag "test.jpg", class: "circle responsive-img" %>
+            <%= image_tag user.image, class: "circle responsive-img" %>
             <h6 class="center black-text">名前: <%= user.name %> </h6>
             <h6 class="center black-text">年齢: <%= user.age %> </h6>
             <h6 class="center black-text">職業: <%= user.job %> </h6>
@@ -25,12 +25,11 @@
     <!--現地までの地図など  -->
     <div class = "row">
       <div class = "col s6">
-        <div class="card-panel white lighten-5" href = "**">
-           <a href = "****">レストラン名</a>
-          <p>予算 **円</p>
-          <p>**:**~**:**</p>
+        <div class="card-panel white lighten-5">
+          <%= link_to @restaurant.name ,@restaurant.url %>
+          <p><%= @start_time %> ~</p>
         </div>
-        <%= image_tag "restaurant.jpg", class: "responsive-img" %>
+        <%= image_tag @restaurant.image, class: "responsive-img" %>
 
       </div>
       <div class = "col s6">

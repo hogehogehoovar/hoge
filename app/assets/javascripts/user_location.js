@@ -34,12 +34,11 @@ $(document).on('turbolinks:load', function() {
     }
     document.getElementById("show_result").innerHTML = err_msg;
     //デバッグ用→ document.getElementById("show_result").innerHTML = error.message;
+    // ToDo ここの例外処理
   }
 
   if (path.match('/')) {
-    $(".button").on("click", function() {
-      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    });
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   }
 
 });

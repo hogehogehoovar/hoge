@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 
   def search
     # ユーザーの現在位置から半径50km圏内にある施設のうち、最も近い施設を入手
-    facility = Facility.near(coordinate, 1, :units => :km).first
+    facility = Facility.near(coordinate, 50, :units => :km).first
     event = facility.try(:current_event)
 
     # 施設が見つからない時の例外処理

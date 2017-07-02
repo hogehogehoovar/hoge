@@ -39,16 +39,17 @@
 
     </div>
     <div class = "center">
-      <%= link_to "参加します", attend_event_group_group_users_path(@event, @group), id: 'attend_button', remote: true if false %>
       <!-- ToDo: モーダルの表示 -->
-      <a class="waves-effect waves-light btn" href = "UI_2.html">参加</a>
-      <%= link_to "不参加", event_groups_path(@event), class: "waves-effect waves-light btn"%>
+      <% if @group_user.attendance %>
+        <div class="card-panel teal lighten-4" id="result">
+          <h5 class="center"> 参加確定!!</h5>
+        </div>
+      <% else %>
+        <%= link_to "参加します", attend_event_group_group_users_path(@event, @group), id: 'attend_button', class: "waves-effect waves-light btn" ,remote: true %>
+        <%= link_to "不参加", event_groups_path(@event), id: 'absent_button', class: "waves-effect waves-light btn"%>
+      <% end %>
     </div>
   </div>
-</div>
-
-<div style='width: 800px;'>
-
 </div>
 
 <script type="text/javascript">

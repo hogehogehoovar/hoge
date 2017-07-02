@@ -42,7 +42,7 @@
       <%= link_to "参加します", attend_event_group_group_users_path(@event, @group), id: 'attend_button', remote: true if false %>
       <!-- ToDo: モーダルの表示 -->
       <a class="waves-effect waves-light btn" href = "UI_2.html">参加</a>
-      <a class="waves-effect waves-light btn" href = "UI_0.html">不参加</a>
+      <%= link_to "不参加", event_groups_path(@event), class: "waves-effect waves-light btn"%>
     </div>
   </div>
 </div>

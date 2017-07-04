@@ -17,6 +17,8 @@ userId=argvs[2]
 #userList=[]
 #参加中のユーザの情報辞書
 userDic={}
+#groupsテーブルのid
+group=[]
 #グループとユーザの対応
 group_users={}
 
@@ -48,6 +50,12 @@ def sql():
     userDic = {user: getCursor(cursor,sql_userInfo,user) for user in userList}
     #userDicをcos_sim計算しやすいように正規化
     userDic={k:(v[0],(now.year-v[1].year)/80,ord(v[2])/65535,ord(v[3])/65535) for k,v in userDic.items()}
+
+    sql_group = 'select id from groups '
+    cursor.execute(sql_group)
+    results = cursor.fetchall()
+    global group
+    group=[x[0] for x in results]
 
     #グループとユーザの対応
     sql_group_user = 'select group_id,user_id from group_users '
@@ -82,7 +90,7 @@ def getGroup():
         createGroup()
     #1人のグループあるならとりあえずそこに入れる
     elif not len(group1)==0:
-        insert(group1)
+        insert(group1[0])
     #それ以外
     else:
         #cos類似度計算
@@ -111,8 +119,14 @@ def insert(groupId):
         cur.execute("INSERT INTO group_users (user_id,group_id,attendance,created_at,updated_at) VALUES (%s,%s,%s,%s,%s)", (int(userId),int(groupId),0,str_now,str_now))
 
 def createGroup():
-    maxGroupId=max([k for k,v in group_users.items()])
-    insert(maxGroupId+1)
+    if len(group)==0:
+        maxGroupId=0
+    else:
+        maxGroupId=max([x for x in group])
+    with pymysql.connect(user='sonoda', password='sonoda', host='localhost', database='webEng') as cur:
+        str_now = now.isoformat()
+        cur.execute("INSERT INTO groups (id,event_id,restaurant_id,created_at,updated_at) VALUES (%s,%s,%s,%s,%s)", (int(maxGroupId)+1,int(eventId),2,str_now,str_now))
+        cur.execute("INSERT INTO group_users (user_id,group_id,attendance,created_at,updated_at) VALUES (%s,%s,%s,%s,%s)", (int(userId),int(maxGroupId)+1,0,str_now,str_now))
 
 
 def closeSql():

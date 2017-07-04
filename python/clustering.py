@@ -107,7 +107,8 @@ def getGroup():
             else:
                 insert(maxGroup)
         else:
-            if maxCos <0.5/(len(group)+len(group2)):
+            #if maxCos <0.5/(len(group)+len(group2)):
+            if maxCos <1/(len(group)+len(group2)):
                 createGroup()
             else:
                 insert(maxGroup)

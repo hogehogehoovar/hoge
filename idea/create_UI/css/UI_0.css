@@ -1,0 +1,26 @@
+.invitation{
+  z-index: 1
+}
+
+.party_eval{
+  z-index: 2;
+  position:absolute; top:5%;
+  width:100%;
+}
+
+.cancel_confirm{
+  position:absolute; top:5%;
+  width:100%;
+}
+
+.after_answer{
+  position:absolute; top:35%;
+  z-index:4;
+  width:100%;
+}
+
+.before_answer{
+  position:absolute;top:35%;
+  z-index:5;
+  width:100%;
+}

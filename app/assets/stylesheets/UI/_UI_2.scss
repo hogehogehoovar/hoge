@@ -1,0 +1,22 @@
+.map{
+  z-index: 0;
+}
+
+.contents{
+  z-index: 1;
+  width:100%;
+  position: absolute;
+  top:0px
+}
+
+.participation_botton{
+  z-index:2;
+}
+
+.arrival{
+  z-index:3;
+}
+
+.cancel{
+  z-index:4;
+}

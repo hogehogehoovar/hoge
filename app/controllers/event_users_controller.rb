@@ -8,20 +8,10 @@ class EventUsersController < ApplicationController
     event_user = EventUser.find_by( { event_id: event.id, user_id: current_user.id } )
     if event_user.nil?
       EventUser.create( { event_id: event.id, user_id: current_user.id } )
-      RubyPython.start
-
-      # dir = Rails.root.join('sandbox').to_s
-      # sys = RubyPython.import 'sys'
-      # sys.path.append File.join(dir)
-      # create_groups = RubyPython.import("create_groups")
-      # create_groups.create!( arg1: event.id, arg2: current_user.id )
 
       dir = Rails.root.join('sandbox').to_s
-      sys = RubyPython.import 'sys'
-      sys.path.append File.join(dir)
-      python = RubyPython.import('called_ruby.py')
-      python.print_python
-      RubyPython.stop
+      result = system("python #{dir}/create_groups.py #{event.id}  #{current_user.id}")
+      puts "cannot connect to python" if not result
     end
 
     group = Group.search_by_user_and_event(current_user.id, event.id)

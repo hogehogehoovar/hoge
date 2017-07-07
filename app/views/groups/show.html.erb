@@ -7,9 +7,9 @@
     </div>
 
     <div class = "member_window">
-      <div class = "row">
+      <div class = "row users">
         <% @users.each do |user| %>
-          <div class="col s3">
+          <div class="col s3 user" data-user-id=<%= user.id %>>
             <%= image_tag user.image, class: "circle responsive-img" unless user.image.blank? %>
             <h6 class="center black-text">名前: <%= user.name %> </h6>
             <h6 class="center black-text">年齢: <%= user.age %> </h6>

@@ -20,5 +20,9 @@ class GroupsController < ApplicationController
       marker.lng location.longitude
       marker.infowindow location.name
     end
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 end

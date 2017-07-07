@@ -1,0 +1,6 @@
+LOAD DATA  INFILE "/Users/sonodaatom/Desktop/users.csv" 
+INTO TABLE users
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n' 
+(@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13,@14,@15,@16,@17,@18,@19)
+SET email=@2, encrypted_password=@3, gender=@14, birthday=@15, job=@16,university=@17,name=@19;

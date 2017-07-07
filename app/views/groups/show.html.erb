@@ -10,7 +10,7 @@
       <div class = "row">
         <% @users.each do |user| %>
           <div class="col s3">
-            <%= image_tag user.image, class: "circle responsive-img" %>
+            <%= image_tag user.image, class: "circle responsive-img" unless user.image.blank? %>
             <h6 class="center black-text">名前: <%= user.name %> </h6>
             <h6 class="center black-text">年齢: <%= user.age %> </h6>
             <h6 class="center black-text">職業: <%= user.job %> </h6>
@@ -29,7 +29,7 @@
           <%= link_to @restaurant.name ,@restaurant.url %>
           <p><%= @start_time %> ~</p>
         </div>
-        <%= image_tag @restaurant.image, class: "responsive-img" %>
+        <%= image_tag @restaurant.image, class: "responsive-img" unless @restaurant.image.blank? %>
 
       </div>
       <div class = "col s6">

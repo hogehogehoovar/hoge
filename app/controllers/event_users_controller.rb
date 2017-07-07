@@ -9,7 +9,7 @@ class EventUsersController < ApplicationController
     if event_user.nil?
       EventUser.create( { event_id: event.id, user_id: current_user.id } )
 
-      dir = Rails.root.join('sandbox').to_s
+      dir = Rails.root.join('scripts').to_s
       result = system("python #{dir}/create_groups.py #{event.id}  #{current_user.id}")
       puts "cannot connect to python" if not result
     end

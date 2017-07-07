@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function() {
   var users = $('.users');
 
   function buildHTML(user) {
-    var html = $('<div class="col s3 user" data-user-id=' + user.id + '>');
+    var html = $('<div class="col s3 user">');
     if (user.image) {
       html.append('<img class="circle responsive-img" src=' + user.image + '>');
     }
@@ -20,14 +20,13 @@ $(document).on('turbolinks:load', function() {
           dataType: 'json'
         })
         .done(function(data) {
+          users.empty()
           var existedUserIds = users.children().map(function(i, elm) {
             return Number(elm.dataset.userId);
           });
           $.each(data, function(i, user) {
-            if ($.inArray(user.id, existedUserIds) === -1) {
-              var html = buildHTML(user);
-              users.append(html);
-            }
+            var html = buildHTML(user);
+            users.append(html);
           });
         });
       }, 5000);

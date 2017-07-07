@@ -12,27 +12,53 @@ $(document).on('turbolinks:load', function() {
   }
 
   if (path.match('/groups/')) {
-    var timer = setInterval(function(){
-      $.ajax({
-        type:     'GET',
-        url:       path,
-        dataType: 'json'
-      })
-      .done(function(data) {
-        var existedUserIds = users.children().map(function(i, elm) {
-          return Number(elm.dataset.userId);
+    if (window.set_timer_on == null) {
+      window.timer = setInterval(function(){
+        $.ajax({
+          type:     'GET',
+          url:       path,
+          dataType: 'json'
+        })
+        .done(function(data) {
+          var existedUserIds = users.children().map(function(i, elm) {
+            return Number(elm.dataset.userId);
+          });
+          $.each(data, function(i, user) {
+            if ($.inArray(user.id, existedUserIds) === -1) {
+              var html = buildHTML(user);
+              users.append(html);
+            }
+          });
         });
-        $.each(data, function(i, user) {
-          if ($.inArray(user.id, existedUserIds) === -1) {
-            var html = buildHTML(user);
-            users.append(html);
-         }
-        });
-      });
-    }, 5000);
+      }, 5000);
+    }
+  } else if (window.set_timer_on !== null) { // setIntarvalを動かしたくないページに来てtimerが動いる場合
+    clearInterval(window.timer)
+    window.timer = null
   }
-  // turbolinks によってページ遷移先にsetIntervalが引き継がれてしまうバグを解除
-  $(this).on('turbolinks:click', function() {
-    clearInterval(timer);
-  });
+
+  // if (path.match('/groups/')) {
+  //   var timer = setInterval(function(){
+  //     $.ajax({
+  //       type:     'GET',
+  //       url:       path,
+  //       dataType: 'json'
+  //     })
+  //     .done(function(data) {
+  //       var existedUserIds = users.children().map(function(i, elm) {
+  //         return Number(elm.dataset.userId);
+  //       });
+  //       $.each(data, function(i, user) {
+  //         if ($.inArray(user.id, existedUserIds) === -1) {
+  //           var html = buildHTML(user);
+  //           users.append(html);
+  //        }
+  //       });
+  //     });
+  //   }, 5000);
+  // }
+  // // turbolinks によってページ遷移先にsetIntervalが引き継がれてしまうバグを解除
+  // $(this).on('turbolinks:click', function() {
+  //   clearInterval(timer);
+  // });
 });

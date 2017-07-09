@@ -10,7 +10,11 @@
       <div class = "row users">
         <% @users.each do |user| %>
           <div class="col s3 user">
-            <%= image_tag user.image, class: "circle responsive-img" unless user.image.blank? %>
+            <% if user.attend_group?(@group.id) %>
+              <%= image_tag user.image, class: "circle responsive-img" unless user.image.blank? %>
+            <% else %>
+              <%= image_tag user.image, class: "circle responsive-img user--undecided" unless user.image.blank? %>
+            <% end %>
             <h6 class="center black-text">名前: <%= user.name %> </h6>
             <h6 class="center black-text">年齢: <%= user.age %> </h6>
             <h6 class="center black-text">職業: <%= user.job %> </h6>

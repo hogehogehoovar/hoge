@@ -4,8 +4,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    # includesが効いてないので、どうしてもN+1を避けたければsql直打ちでマージする
     @users = @group.users.includes(:group_users)
-
     # すでにattend=1になっているかの判定に使う
     @group_user = GroupUser.find_by(group_id: @group.id, user_id: current_user.id)
     @event = Event.find(params[:event_id])

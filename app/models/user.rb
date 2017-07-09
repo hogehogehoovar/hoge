@@ -15,6 +15,6 @@ class User < ApplicationRecord
   end
 
   def attend_group?(group_id)
-    group_users.find_by(group_id: group_id) == 1
+    group_users.find_by(group_id: group_id).attendance
   end
 end

@@ -5,7 +5,11 @@ $(document).on('turbolinks:load', function() {
   function buildHTML(user) {
     var html = $('<div class="col s3 user">');
     if (user.image) {
-      html.append('<img class="circle responsive-img" src=' + user.image + '>');
+      if (user.attend_group) {
+       html.append('<img class="circle responsive-img" src=' + user.image + '>');
+      } else {
+        html.append('<img class="circle responsive-img user--undecided" src=' + user.image + '>');
+      }
     }
     html.append('<h6 class="center black-text">名前: ' + user.name + '</h6>' + '<h6 class="center black-text">年齢: ' + user.age + '</h6>' + '<h6 class="center black-text">職業: ' + user.job + '</h6>')
     return html;

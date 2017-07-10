@@ -7,10 +7,14 @@
     </div>
 
     <div class = "member_window">
-      <div class = "row">
+      <div class = "row users">
         <% @users.each do |user| %>
-          <div class="col s3">
-            <%= image_tag user.image, class: "circle responsive-img" unless user.image.blank? %>
+          <div class="col s3 user">
+            <% if user.attend_group?(@group.id) %>
+              <%= image_tag user.image, class: "circle responsive-img" unless user.image.blank? %>
+            <% else %>
+              <%= image_tag user.image, class: "circle responsive-img user--undecided" unless user.image.blank? %>
+            <% end %>
             <h6 class="center black-text">名前: <%= user.name %> </h6>
             <h6 class="center black-text">年齢: <%= user.age %> </h6>
             <h6 class="center black-text">職業: <%= user.job %> </h6>
@@ -40,12 +44,12 @@
     <div class = "center">
       <!-- ToDo: モーダルの表示 -->
       <% if @group_user.attendance %>
-        <div class="card-panel teal lighten-4" id="result">
-          <h5 class="center"> 参加確定!!</h5>
-        </div>
+          <div class="card-panel teal lighten-4" id="result">
+            <h5 class="center"> 参加確定!!</h5>
+          </div>
       <% else %>
-        <%= link_to "参加します", attend_event_group_group_users_path(@event, @group), id: 'attend_button', class: "waves-effect waves-light btn" ,remote: true %>
-        <%= link_to "不参加", event_groups_path(@event), id: 'absent_button', class: "waves-effect waves-light btn"%>
+        <%= link_to "参加します", attend_event_group_group_users_path(@event, @group), id: 'attend_button', class: "waves-effect waves-light btn-large" ,remote: true %>
+        <%= link_to "不参加", event_groups_path(@event), id: 'absent_button', class: "waves-effect waves-light btn-large"%>
       <% end %>
     </div>
   </div>

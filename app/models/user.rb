@@ -13,4 +13,8 @@ class User < ApplicationRecord
     date_format = "%Y%m%d"
     (Date.today.strftime(date_format).to_i - birthday.strftime(date_format).to_i) / 10000
   end
+
+  def attend_group?(group_id)
+    group_users.find_by(group_id: group_id).attendance
+  end
 end

@@ -25,7 +25,7 @@ group_users={}
 #新しいグループを量産するフェーズかどうか
 isCreateFase=False
 #新しいグループを量産するフェーズの人数の閾値
-PARTICIPANTNUM=15
+PARTICIPANTNUM=8
 #現在時刻
 now = datetime.today()
 

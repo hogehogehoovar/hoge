@@ -11,7 +11,8 @@
       <div class="col s10">
         <div class="card-panel white lighten-5">
           <div class = "center">
-            <p>二次会に行きましょう！</p>
+            <p><%= "#{current_user.name}さん、" if user_signed_in? %>二次会に行きましょう！</p>
+            <p> 場所: <%= @event.facility.name %> </p>
             <p> イベント名: <%= @event.name %> </p>
             <%= link_to "参加", event_event_users_path(@event), method: :post, class: "waves-effect waves-light btn" %>
             <%= link_to "再検索", root_path, method: :get, class: "waves-effect waves-light btn" %>

@@ -51,8 +51,8 @@ def sql():
     #userDicをcos_sim計算しやすいように正規化
     userDic={k:(v[0],(now.year-v[1].year)/80,ord(v[2])/65535,ord(v[3])/65535) for k,v in userDic.items()}
 
-    sql_group = 'select id from groups '
-    cursor.execute(sql_group)
+    sql_group = 'select id from groups where event_id=%s'
+    cursor.execute(sql_group,eventId)
     results = cursor.fetchall()
     global group
     group=[x[0] for x in results]
@@ -63,7 +63,7 @@ def sql():
     results = cursor.fetchall()
     global group_users
     group_users={k: {} for k, v in results if k in group}
-    {k: group_users[k].update({v:userDic[v]}) for k, v in results}
+    {k: group_users[k].update({v:userDic[v]}) for k, v in results if k in group}
 
     #cursor切断
     cursor.close
@@ -120,12 +120,17 @@ def insert(groupId):
         cur.execute("INSERT INTO group_users (user_id,group_id,attendance,created_at,updated_at) VALUES (%s,%s,%s,%s,%s)", (int(userId),int(groupId),0,str_now,str_now))
 
 def createGroup():
-    if len(group)==0:
-        maxGroupId=0
-    else:
-        maxGroupId=max([x for x in group])
     with pymysql.connect(user='sonoda', password='sonoda', host='localhost', database='webEng') as cur:
-        str_now = now.isoformat()
+        maxGroupId=0
+        sql_group1 = 'select id from groups'
+        cur.execute(sql_group1)
+        results = cur.fetchall()
+        groupt=[x[0] for x in results]
+        if len(groupt)==0:
+            maxGroupId=0
+        else:
+            str_now = now.isoformat()
+            maxGroupId=max([x for x in groupt])
         cur.execute("INSERT INTO groups (id,event_id,restaurant_id,created_at,updated_at) VALUES (%s,%s,%s,%s,%s)", (int(maxGroupId)+1,int(eventId),2,str_now,str_now))
         cur.execute("INSERT INTO group_users (user_id,group_id,attendance,created_at,updated_at) VALUES (%s,%s,%s,%s,%s)", (int(userId),int(maxGroupId)+1,0,str_now,str_now))
 

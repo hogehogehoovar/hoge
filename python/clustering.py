@@ -62,7 +62,11 @@ def sql():
     cursor.execute(sql_group_user)
     results = cursor.fetchall()
     global group_users
-    group_users={k: {} for k, v in results}
+    print( 'デバッグ')
+    print(results)
+    group_users={k: {} for k, v in results if k in group}
+    print( group)
+    print( group_users)
     {k: group_users[k].update({v:userDic[v]}) for k, v in results}
 
     #cursor切断

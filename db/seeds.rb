@@ -3,5 +3,5 @@ def get_alphabet(n)
 end
 
 50.times do |num|
-  User.create!(email: "test#{num}@gmail.com", password: '000000', name: Faker::Pokemon.name, job: get_alphabet(Faker::Number.between(1, 10)), university: get_alphabet(Faker::Number.between(1, 10)), gender: Faker::Number.between(0, 1), birthday: Faker::Date.birthday(18, 35) )
+  User.create!(email: "test#{num}@gmail.com", password: '000000', name: Faker::Pokemon.name, job: get_alphabet(Faker::Number.between(1, 10)), university: get_alphabet(Faker::Number.between(1, 10)), gender: Faker::Number.between(0, 1), birthday: Faker::Date.birthday(18, 35), image: 'https://www.pakutaso.com/shared/img/thumb/TRT0607001_TP_V.jpg' )
 end

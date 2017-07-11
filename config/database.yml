@@ -51,4 +51,4 @@ production:
   <<: *default
   database: uchiage_production
   username: uchiage
-  password: <%= ENV['UCHIAGE_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>

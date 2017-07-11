@@ -10,7 +10,8 @@ class EventUsersController < ApplicationController
       EventUser.create( { event_id: event.id, user_id: current_user.id } )
 
       dir = Rails.root.join('scripts').to_s
-      result = system("python #{dir}/create_groups.py #{event.id}  #{current_user.id}")
+      file = Rails.env == 'production' ? dir+"/create_groups_production.py" : dir+"/create_groups.py"
+      result = system("python #{file} #{event.id}  #{current_user.id}")
       puts "cannot connect to python" if not result
     end
 

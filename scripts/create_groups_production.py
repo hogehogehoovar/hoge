@@ -136,10 +136,10 @@ def createGroup():
         cur.execute(sql_group1)
         results = cur.fetchall()
         groupt=[x[0] for x in results]
+        str_now = now.isoformat()
         if len(groupt)==0:
             maxGroupId=0
         else:
-            str_now = now.isoformat()
             maxGroupId=max([x for x in groupt])
         cur.execute("INSERT INTO groups (id,event_id,restaurant_id,created_at,updated_at) VALUES (%s,%s,%s,%s,%s)", (int(maxGroupId)+1,int(eventId),2,str_now,str_now))
         cur.execute("INSERT INTO group_users (user_id,group_id,attendance,created_at,updated_at) VALUES (%s,%s,%s,%s,%s)", (int(userId),int(maxGroupId)+1,0,str_now,str_now))

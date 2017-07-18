@@ -17,7 +17,7 @@ person_arr = ['https://www.pakutaso.com/shared/img/thumb/00_PP45_PP_TP_V.jpg',
 50.times do |num|
   User.create(email: "web#{num}@gmail.com",
               password: '000000',
-              name: Gimei.last.kanji,
+              name: Faker::Name.first_name,
               job: Faker::Job.field,
               university: Faker::University.name,
               gender: Faker::Number.between(0, 1),

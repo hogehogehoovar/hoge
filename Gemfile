@@ -37,7 +37,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'pry'
-  gem 'faker'
 end
 
 group :development do
@@ -51,7 +50,6 @@ end
 
 group :production do
   gem 'unicorn'
-  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -62,3 +60,5 @@ gem 'geocoder'
 gem 'rubypython'
 gem 'gmaps4rails'
 gem 'materialize-sass'
+gem 'gimei'
+gem 'faker'

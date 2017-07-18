@@ -14,12 +14,12 @@ person_arr = ['https://www.pakutaso.com/shared/img/thumb/00_PP45_PP_TP_V.jpg',
               'https://www.pakutaso.com/shared/img/thumb/TSURU170321-85%20mm-087_TP_V.jpg',
               ]
 
-50.times do |num|
+51.times do |num|
   User.create(email: "web#{num}@gmail.com",
               password: '000000',
               name: Faker::Name.first_name,
-              job: Faker::Job.field,
-              university: Faker::University.name,
+              job: get_alphabet(Faker::Number.between(1, 10)),
+              university: get_alphabet(Faker::Number.between(1, 10)),
               gender: Faker::Number.between(0, 1),
               birthday: Faker::Date.birthday(18, 35),
               image: person_arr.shuffle.sample )
